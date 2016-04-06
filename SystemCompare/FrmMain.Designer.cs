@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.Progress = new System.Windows.Forms.ProgressBar();
+            this.OFileD = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // btnSnapshot
@@ -128,6 +129,15 @@
             this.Progress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.Progress.TabIndex = 8;
             // 
+            // OFileD
+            // 
+            this.OFileD.DefaultExt = "txt";
+            this.OFileD.ReadOnlyChecked = true;
+            this.OFileD.RestoreDirectory = true;
+            this.OFileD.ShowReadOnly = true;
+            this.OFileD.SupportMultiDottedExtensions = true;
+            this.OFileD.Title = "Load Registry File";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +171,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ProgressBar Progress;
+        private System.Windows.Forms.OpenFileDialog OFileD;
     }
 }
 
