@@ -65,8 +65,18 @@ namespace SystemCompare
             lblStatus.Text = @"Generating Scheduled Tasks Snapshot";
             DumpScheduledTasks();
 
+            // Dump Startup Applications
+            lblStatus.Text = @"Generating Startup Applications Snapshot";
+            DumpStartupApplications();
+
             lblStatus.Text = @"Done";
             ToggleButtons();
+        }
+
+        private void DumpStartupApplications()
+        {
+            StartupApplications sa = new StartupApplications();
+            sa.DumpStartupApplications(SnapshotName);
         }
 
         private void DumpScheduledTasks()

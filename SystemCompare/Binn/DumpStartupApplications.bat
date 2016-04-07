@@ -1,0 +1,1 @@
+wmic startup > %1
