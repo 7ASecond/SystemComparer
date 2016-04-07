@@ -61,8 +61,18 @@ namespace SystemCompare
             lblStatus.Text = @"Generating Drivers Snapshot";
             DumpDrivers();
 
+            // Dump Scheduled Tasks
+            lblStatus.Text = @"Generating Scheduled Tasks Snapshot";
+            DumpScheduledTasks();
+
             lblStatus.Text = @"Done";
             ToggleButtons();
+        }
+
+        private void DumpScheduledTasks()
+        {
+            ScheduledTasks st = new ScheduledTasks();
+            st.DumpScheduledTasks(SnapshotName);
         }
 
         private void DumpDrivers()

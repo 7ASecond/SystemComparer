@@ -94,6 +94,7 @@
     <Compile Include="Classes\NetStat.cs" />
     <Compile Include="Classes\Registry.cs" />
     <Compile Include="Classes\Scan.cs" />
+    <Compile Include="Classes\ScheduledTasks.cs" />
     <Compile Include="Classes\Tasks.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
@@ -132,6 +133,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Binn\DumpIPConfig.bat" />
+    <None Include="Binn\DumpScheduledTasks.bat" />
     <None Include="Binn\DumpTasks.bat" />
     <None Include="Binn\DumpNetStats.bat" />
     <None Include="packages.config" />
