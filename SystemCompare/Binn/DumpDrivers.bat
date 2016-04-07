@@ -1,0 +1,1 @@
+driverquery /FO list /v > %1

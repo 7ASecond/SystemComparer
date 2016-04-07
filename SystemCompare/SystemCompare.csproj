@@ -87,6 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Drivers.cs" />
     <Compile Include="Classes\Environment.cs" />
     <Compile Include="Classes\Files.cs" />
     <Compile Include="Classes\IpConfig.cs" />
@@ -125,6 +126,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
+    <None Include="Binn\DumpDrivers.bat" />
     <None Include="Binn\DumpEnvironmentVariables.bat" />
     <None Include="Binn\DumpFileSystem.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -57,8 +57,18 @@ namespace SystemCompare
             lblStatus.Text = @"Generating Network Snapshot";
             DumpNetStats();
 
+            // Dump Drivers
+            lblStatus.Text = @"Generating Drivers Snapshot";
+            DumpDrivers();
+
             lblStatus.Text = @"Done";
             ToggleButtons();
+        }
+
+        private void DumpDrivers()
+        {
+            Drivers d = new Drivers();
+            d.DumpDrivers(SnapshotName);
         }
 
         private void DumpNetStats()
