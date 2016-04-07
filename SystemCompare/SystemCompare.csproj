@@ -90,6 +90,7 @@
     <Compile Include="Classes\Environment.cs" />
     <Compile Include="Classes\Files.cs" />
     <Compile Include="Classes\IpConfig.cs" />
+    <Compile Include="Classes\NetStat.cs" />
     <Compile Include="Classes\Registry.cs" />
     <Compile Include="Classes\Scan.cs" />
     <Compile Include="Classes\Tasks.cs" />
@@ -130,6 +131,7 @@
     </None>
     <None Include="Binn\DumpIPConfig.bat" />
     <None Include="Binn\DumpTasks.bat" />
+    <None Include="Binn\DumpNetStats.bat" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

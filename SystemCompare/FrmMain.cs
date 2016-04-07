@@ -53,14 +53,24 @@ namespace SystemCompare
             lblStatus.Text = @"Generating IP Configuration Snapshot";
             DumpIpConfig();
 
+            // Dump NetStats
+            lblStatus.Text = @"Generating Network Snapshot";
+            DumpNetStats();
+
             lblStatus.Text = @"Done";
             ToggleButtons();
         }
 
+        private void DumpNetStats()
+        {
+            NetStat ns = new NetStat();
+            ns.DumpNetStat(SnapshotName);
+        }
+
         private void DumpIpConfig()
         {
-        IpConfig ip = new IpConfig();
-        ip.DumpIpConfig(SnapshotName);
+            IpConfig ip = new IpConfig();
+            ip.DumpIpConfig(SnapshotName);
         }
 
         private void DumpEnvironment()
