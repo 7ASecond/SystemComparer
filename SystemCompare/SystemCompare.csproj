@@ -128,16 +128,30 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
-    <None Include="Binn\DumpDrivers.bat" />
-    <None Include="Binn\DumpEnvironmentVariables.bat" />
+    <None Include="Binn\DumpDrivers.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Binn\DumpEnvironmentVariables.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Binn\DumpFileSystem.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Binn\DumpIPConfig.bat" />
-    <None Include="Binn\DumpScheduledTasks.bat" />
-    <None Include="Binn\DumpStartupApplications.bat" />
-    <None Include="Binn\DumpTasks.bat" />
-    <None Include="Binn\DumpNetStats.bat" />
+    <None Include="Binn\DumpIPConfig.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Binn\DumpScheduledTasks.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Binn\DumpStartupApplications.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Binn\DumpTasks.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Binn\DumpNetStats.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
