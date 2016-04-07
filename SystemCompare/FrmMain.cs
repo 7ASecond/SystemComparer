@@ -37,11 +37,22 @@ namespace SystemCompare
 
             ScanFiles();
 
-            // Scan Registry 
+            // Dump Registry 
             DumpRegistry();
+
+            // Dump Tasks
+            lblStatus.Text = @"Generating Tasks Snapshot";
+            DumpTasks();
+
             lblStatus.Text = @"Done";
 
             ToggleButtons();
+        }
+
+        private void DumpTasks()
+        {
+        Tasks tasks = new Tasks();
+        tasks.DumpTasks(SnapshotName);
         }
 
         private void ToggleButtons()
@@ -56,7 +67,8 @@ namespace SystemCompare
             var r = new Registry();
             foreach (var hive in Registry.GetRegistryHives())
             {
-                lblStatus.Text = @"Dumping Hive: " + hive;
+                Application.DoEvents();
+                lblStatus.Text = @"Generating Hive: " + hive + @" Snapshot";
                 r.DumpRegistryHive(hive, SnapshotName);
             }
         }
@@ -64,46 +76,40 @@ namespace SystemCompare
         private void ScanFiles()
         {
             // Scan C:\ 
-            lblStatus.Text = @"Initial Scan Please Wait.";
-            var fileList = FileScan.RecursiveScan2("C:\\");
-            lblFiles.Text = fileList.Count.ToString("N0");
-            Progress.Maximum = fileList.Count;
+            lblStatus.Text = @"Generating File System Snapshot Please Wait.";
 
-            //var finfo = new FileInfo(_baseFileName);
-            //if (string.IsNullOrEmpty(SnapshotName)) GetSnapshotName(finfo); // Can happen when starting program and doing Diff without doing Snapshot first
             var files = new Files(SnapshotName);
-            StreamWriter sw = files.OpenFilesLog();
-
-            // Full Scan
-            //  FileScanHash(fileList, sw);
-
-            // Quick File Scan
-            FileScanAttributes(fileList, sw);
-
-            files.CloseFileLog();
+            files.DumpFileSystem(SnapshotName);            
         }
 
-        private void FileScanAttributes(List<string> fileList, StreamWriter sw)
+        private void FileScanAttributes(List<string> fileList, TextWriter sw)
         {
+            if (fileList == null) throw new ArgumentNullException(nameof(fileList));
+
             foreach (var file in fileList)
             {
                 Progress.Value++;
+                try
+                {
+                    var finfo = new FileInfo(file);
+                    var timeStamp = finfo.CreationTimeUtc + " " + finfo.LastAccessTimeUtc + " " + finfo.LastWriteTimeUtc;
+                    var size = finfo.Length;
+                    sw.WriteLine("[" + timeStamp + "]\t [" + size + "]\t" + file);
+                }
+                catch (Exception)
+                {
+                    //TODO: Requires an Error log so we still know what files exist through diffing the error logs
+                }
 
-                string TimeStamp = string.Empty;
-                long size = 0;
-
-                FileInfo finfo = new FileInfo(file);
-                TimeStamp = finfo.CreationTimeUtc + " " + finfo.LastAccessTimeUtc + " " + finfo.LastWriteTimeUtc;
-                size = finfo.Length;
 
                 lblStatus.Text = @"Processing File " + Progress.Value.ToString("N0");
-                sw.WriteLine("[" + TimeStamp + "]\t [" + size + "]\t" + file);
                 Application.DoEvents();
             }
         }
 
-        private void FileScanHash(List<string> fileList, StreamWriter sw)
+        private void FileScanHash(List<string> fileList, TextWriter sw)
         {
+            if (fileList == null) throw new ArgumentNullException(nameof(fileList));
             foreach (var file in fileList)
             {
                 Progress.Value++;

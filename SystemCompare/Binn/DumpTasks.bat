@@ -1,0 +1,1 @@
+TASKLIST /SVC /FO LIST > %1
