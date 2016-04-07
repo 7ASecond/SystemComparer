@@ -9,6 +9,7 @@ using DiffPlex;
 using DiffPlex.DiffBuilder;
 using DiffPlex.DiffBuilder.Model;
 using HashLib;
+using Environment = SystemCompare.Classes.Environment;
 
 namespace SystemCompare
 {
@@ -44,15 +45,34 @@ namespace SystemCompare
             lblStatus.Text = @"Generating Tasks Snapshot";
             DumpTasks();
 
-            lblStatus.Text = @"Done";
+            // Dump Environment Variables
+            lblStatus.Text = @"Generating Environment Variables Snapshot";
+            DumpEnvironment();
 
+            // Dump IP Config
+            lblStatus.Text = @"Generating IP Configuration Snapshot";
+            DumpIpConfig();
+
+            lblStatus.Text = @"Done";
             ToggleButtons();
+        }
+
+        private void DumpIpConfig()
+        {
+        IpConfig ip = new IpConfig();
+        ip.DumpIpConfig(SnapshotName);
+        }
+
+        private void DumpEnvironment()
+        {
+            Environment env = new Environment();
+            env.DumpEnvironment(SnapshotName);
         }
 
         private void DumpTasks()
         {
-        Tasks tasks = new Tasks();
-        tasks.DumpTasks(SnapshotName);
+            Tasks tasks = new Tasks();
+            tasks.DumpTasks(SnapshotName);
         }
 
         private void ToggleButtons()
@@ -79,7 +99,7 @@ namespace SystemCompare
             lblStatus.Text = @"Generating File System Snapshot Please Wait.";
 
             var files = new Files(SnapshotName);
-            files.DumpFileSystem(SnapshotName);            
+            files.DumpFileSystem(SnapshotName);
         }
 
         private void FileScanAttributes(List<string> fileList, TextWriter sw)

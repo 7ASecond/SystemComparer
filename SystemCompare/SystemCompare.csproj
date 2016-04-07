@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Classes\Environment.cs" />
     <Compile Include="Classes\Files.cs" />
+    <Compile Include="Classes\IpConfig.cs" />
     <Compile Include="Classes\Registry.cs" />
     <Compile Include="Classes\Scan.cs" />
     <Compile Include="Classes\Tasks.cs" />
@@ -127,6 +128,7 @@
     <None Include="Binn\DumpFileSystem.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Binn\DumpIPConfig.bat" />
     <None Include="Binn\DumpTasks.bat" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
